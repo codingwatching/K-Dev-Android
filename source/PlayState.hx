@@ -1426,7 +1426,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 		//This took us 4 days.
 
-		scoreTxt.text = "Score:" + songScore + "| Misses:" + misses + "| Note hits:" + notehit + "| Combo:" + combo + "| Health:" + healthBar.percent "%";
+		scoreTxt.text = "Score:" + songScore + "| Misses:" + misses + "| Note hits:" + notehit + "| Combo:" + combo + "| Health:" + healthBar.percent + "%";
 
 		#if android
 		var enterPressed = FlxG.keys.justPressed.ENTER || FlxG.android.justReleased.BACK;
