@@ -1426,7 +1426,7 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 		//This took us 4 days.
 
-		scoreTxt.text = "Score:" + songScore + "| Misses:" + misses + "| Note hits:" + notehit + "| Combo:" + combo + "| Health:" + healthBar.precent;
+		scoreTxt.text = "Score:" + songScore + "| Misses:" + misses + "| Note hits:" + notehit + "| Combo:" + combo + "| Health:" + healthBar.percent "%";
 
 		#if android
 		var enterPressed = FlxG.keys.justPressed.ENTER || FlxG.android.justReleased.BACK;
@@ -1784,7 +1784,7 @@ class PlayState extends MusicBeatState
 //antimash for da bois
             var mashing:Int = 0;
 
-                if (FlxG.keys.pressed.UP || FlxG.keys.pressed.DOWN || FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.LEFT)
+                if (FlxG.keys.pressed.UP && FlxG.keys.pressed.DOWN && FlxG.keys.pressed.RIGHT && FlxG.keys.pressed.LEFT)
                 {
                     mashing += 1;
                 }
@@ -1794,7 +1794,7 @@ class PlayState extends MusicBeatState
                     health = 0;
                 }
 
-                if (daNote.wasGoodHit)
+                if (notehit += 1)
                 {
                     mashing -= 0;
                 }
