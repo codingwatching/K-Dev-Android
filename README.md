@@ -4,7 +4,7 @@ check releases to download apk
 
 Download:
 
-very temporarily missing
+https://github.com/KlavierGayming/K-Dev-Android/releases
 
 
 
