@@ -1781,28 +1781,6 @@ class PlayState extends MusicBeatState
 				
 			});
 		}
-//antimash for da bois
-            var mashing:Int = 0;
-
-                if (FlxG.keys.pressed.UP && FlxG.keys.pressed.DOWN && FlxG.keys.pressed.RIGHT && FlxG.keys.pressed.LEFT)
-                {
-                    mashing += 1;
-                }
-
-                if (mashing > 3)
-                {
-                    health = 0;
-                }
-
-                if (notehit += 1)
-                {
-                    mashing -= 0;
-                }
-
-                if (mashing < 0)
-                {
-                    mashing = 0;
-                }
 
 		if (!inCutscene)
 			keyShit();
