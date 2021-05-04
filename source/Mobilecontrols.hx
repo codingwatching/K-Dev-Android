@@ -14,6 +14,20 @@ class Mobilecontrols extends FlxSpriteGroup
 	public var keyboardisenabled:Bool = false;
 
 	public var downscroll_isenabled:Bool = false;
+	public var practice_isenabled:Bool = false;
+	public var fcmode_enable:Bool = false;
+
+    //public var notebasic:Bool = true;
+    //public var noteweek1:Bool = false;
+    //public var noteweek2:Bool = false;
+    //public var noteweek3:Bool = false;
+    //public var noteweek4:Bool = false;
+    //public var noteweek5:Bool = false;
+    //public var noteweekhorror:Bool = false;
+    //public var noteweek6:Bool = false;
+    //public var noteweek7:Bool = false;
+    //public var noteweektricky:Bool = false;
+    //public var noteweekhex:Bool = false;
 
     var _pad:FlxVirtualPad;
 	var _hb:Hitbox;
@@ -49,6 +63,19 @@ class Mobilecontrols extends FlxSpriteGroup
         super();
 
 		downscroll_isenabled = config.getdownscroll();
+		practice_isenabled = config.getpractice();
+		fcmode_enable = config.getfcmode();
+		//notebasic = config.getnotebasic();
+		//noteweek1 = config.getnoteweek1();
+		//noteweek2 = config.getnoteweek2();
+		//noteweek3 = config.getnoteweek3();
+		//noteweek4 = config.getnoteweek4();
+		//noteweek5 = config.getnoteweek5();
+		//noteweekhorror = config.getnoteweekhorror();
+		//noteweek6 = config.getnoteweek6();
+		//noteweek7 = config.getnoteweek7();
+		//noteweektricky = config.getnoteweektricky();
+		//noteweekhex = config.getnoteweekhex();
 
 		// load control mode num from Config.hx
 		controlmode = config.getcontrolmode();
@@ -67,7 +94,7 @@ class Mobilecontrols extends FlxSpriteGroup
 				_pad.alpha = 0.75;
 				this.add(_pad);
 				_pad = config.loadcustom(_pad);
-			case 4:
+			case 4: //hitbox
 				_hb = new Hitbox();
 				hitboxisenabled = true;
 				add(_hb);

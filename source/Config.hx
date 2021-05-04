@@ -13,7 +13,7 @@ class Config {
         save = new FlxSave();
     	save.bind("saveconrtol");
     }
-
+//downscroll
     public function setdownscroll(?value:Bool):Bool {
 		if (save.data.isdownscroll == null) save.data.isdownscroll = false;
 		
@@ -24,6 +24,34 @@ class Config {
 
     public function getdownscroll():Bool {
         if (save.data.isdownscroll != null) return save.data.isdownscroll;
+        return false;
+    }
+
+//practice
+    public function setpractice(?value:Bool):Bool {
+		if (save.data.ispractice == null) save.data.ispractice = false;
+		
+		save.data.ispractice = !save.data.ispractice;
+		save.flush();
+        return save.data.ispractice;
+	}
+
+    public function getpractice():Bool {
+        if (save.data.ispractice != null) return save.data.ispractice;
+        return false;
+    }
+
+//fc mode
+    public function setfcmode(?value:Bool):Bool {
+		if (save.data.isfcmode == null) save.data.isfcmode = false;
+		
+		save.data.isfcmode = !save.data.isfcmode;
+		save.flush();
+        return save.data.isfcmode;
+	}
+
+    public function getfcmode():Bool {
+        if (save.data.isfcmode != null) return save.data.isfcmode;
         return false;
     }
 

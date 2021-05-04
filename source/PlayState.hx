@@ -44,7 +44,6 @@ import openfl.filters.ShaderFilter;
 #if mobile
 import Mobilecontrols;
 #end
-//Yow is cring.
 
 using StringTools;
 
@@ -146,6 +145,19 @@ class PlayState extends MusicBeatState
 	#end
 
 	var downscroll_isenabled:Bool = false;
+	var practice_isenabled:Bool = false;
+	var fcmode_enable:Bool = false;
+	//var notebasic:Bool = true;
+	//var noteweek1:Bool = false;
+	//var noteweek2:Bool = false;
+	//var noteweek3:Bool = false;
+	//var noteweek4:Bool = false;
+	//var noteweek5:Bool = false;
+	//var noteweekhorror:Bool = false;
+	//var noteweek6:Bool = false;
+	//var noteweek7:Bool = false;
+	//var noteweektricky:Bool = false;
+	//var noteweekhex:Bool = false;
 
 	override public function create()
 	{
@@ -157,6 +169,31 @@ class PlayState extends MusicBeatState
 		mcontrols = new Mobilecontrols();
 		downscroll_isenabled = mcontrols.downscroll_isenabled;
         mcontrols = new Mobilecontrols();
+        //notebasic = mcontrols.notebasic;
+        mcontrols = new Mobilecontrols();
+        //noteweek1 = mcontrols.noteweek1;
+        mcontrols = new Mobilecontrols();
+        //noteweek2 = mcontrols.noteweek2;
+        mcontrols = new Mobilecontrols();
+        //noteweek3 = mcontrols.noteweek3;
+        mcontrols = new Mobilecontrols();
+        //noteweek4 = mcontrols.noteweek4;
+        mcontrols = new Mobilecontrols();
+        //noteweek5 = mcontrols.noteweek5;
+        mcontrols = new Mobilecontrols();
+        //noteweekhorror = mcontrols.noteweekhorror;
+        mcontrols = new Mobilecontrols();
+        //noteweek6 = mcontrols.noteweek6;
+        mcontrols = new Mobilecontrols();
+        //noteweek7 = mcontrols.noteweek7;
+        mcontrols = new Mobilecontrols();
+        //noteweektricky = mcontrols.noteweektricky;
+        mcontrols = new Mobilecontrols();
+       // noteweekhex = mcontrols.noteweekhex;
+        mcontrols = new Mobilecontrols();
+        practice_isenabled = mcontrols.practice_isenabled;
+        mcontrols = new Mobilecontrols();
+        fcmode_enable = mcontrols.fcmode_enable;
 		#end
 
 		
@@ -183,7 +220,7 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{
 			case 'tutorial':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('tutorial/tutDialogue'));
+				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
 			case 'bopeebo':
 				dialogue = [
 					'HEY!',
@@ -201,6 +238,12 @@ class PlayState extends MusicBeatState
 				];
 			case 'senpai':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
+			case 'ugh':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('ugh/talk'));
+			case 'guns':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('guns/talk'));
+			case 'stress':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('stress/talk'));
 			case 'roses':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
@@ -217,6 +260,8 @@ class PlayState extends MusicBeatState
 				storyDifficultyText = "Normal";
 			case 2:
 				storyDifficultyText = "Hard";
+		    case 3:
+		        storyDifficultyText = "Erect";
 		}
 
 		iconRPC = SONG.player2;
@@ -561,18 +606,37 @@ class PlayState extends MusicBeatState
 		                            add(waveSprite);
 		                            add(waveSpriteFG);
 		                    */
-					//This is what delayed demo 3. Fuck backgrounds.
+				  }
+				  case 'ugh' | 'guns':
+				  {
+					defaultCamZoom = 0.9;
+					curStage = 'tank';
+					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('tankBG'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					add(bg);
 		          }
-		          case 'improbable-outset' | 'madness':
-		          {
-		                  defaultCamZoom = 0.9;
-		                  curStage = 'hell';
-		                  var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('trickybg'));
-		                  bg.antialiasing = true;
-		                  bg.scrollFactor.set(0.9, 0.9);
-		                  bg.active = false;
-		                  add(bg);
-		          }
+				  case 'stress':
+				  {
+					defaultCamZoom = 0.9;
+					curStage = 'tank2';
+					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('tankBG'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					add(bg);
+				  }
+				  case 'improbable-outset' | 'madness':
+				  {
+					defaultCamZoom = 0.9;
+					curStage = 'hell';
+					var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('trickybg'));
+					bg.antialiasing = true;
+					bg.scrollFactor.set(0.9, 0.9);
+					bg.active = false;
+					add(bg);
+				  }
 		          default:
 		          {
 		                  defaultCamZoom = 0.9;
@@ -614,9 +678,11 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-pixel';
 			case 'schoolEvil':
 				gfVersion = 'gf-pixel';
+			case 'tank':
+				gfVersion = 'gf-tankman';
+			case 'tank2':
+				gfVersion = 'gf-pico';
 		}
-		//no week 7 yet
-
 		if (curStage == 'limo')
 			gfVersion = 'gf-car';
 
@@ -669,6 +735,8 @@ class PlayState extends MusicBeatState
 			case 'tricky':
 				dad.x -= 170;
 				dad.y += 10; 
+			case 'tankman':
+				dad.y += 200;
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
@@ -709,6 +777,20 @@ class PlayState extends MusicBeatState
 				gf.y += 300;
 			case 'hell':
 				boyfriend.x += 250;
+			case 'tank':
+				boyfriend.x -= 500;
+				boyfriend.y -= 100;
+				gf.x -= 500;
+				gf.y -= 100;
+				dad.x -= 500;
+				dad.y -= 100;
+			case 'tank2':
+				boyfriend.x -= 500;
+				boyfriend.y -= 100;
+				gf.x -= 500;
+				gf.y -= 100;
+				dad.x -= 500;
+				dad.y -= 100;
 		}
 
 		add(gf);
@@ -793,11 +875,13 @@ class PlayState extends MusicBeatState
 		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
 		// healthBar
 		add(healthBar);
-
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
-		scoreTxt.scrollFactor.set();
-		add(scoreTxt);
+//middle shit
+        scoreTxt = new FlxText(FlxG.width / 2 - 235, healthBarBG.y + 50, 0, "", 20);
+        if (!FlxG.save.data.accuracyDisplay)
+            scoreTxt.x = 325;
+        scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+        scoreTxt.scrollFactor.set();
+        add(scoreTxt);
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -856,6 +940,12 @@ class PlayState extends MusicBeatState
 						});
 					});
 				case 'senpai':
+					schoolIntro(doof);
+				case 'ugh':
+					schoolIntro(doof);
+				case 'guns':
+					schoolIntro(doof);
+				case 'stress':
 					schoolIntro(doof);
 				case 'roses':
 					FlxG.sound.play(Paths.sound('ANGRY'));
@@ -1424,7 +1514,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.update(elapsed);
-		//This took us 4 days.
 
 		scoreTxt.text = "Score:" + songScore + "| Misses:" + misses + "| Note hits:" + notehit + "| Combo:" + combo + "| Health:" + healthBar.percent + "%";
 
@@ -1479,27 +1568,29 @@ class PlayState extends MusicBeatState
 
 		if (health > 2)
 			health = 2;
-//healthicons yeeeeeeeeeee
-        if (healthBar.percent < 20)
-    {
-            iconP1.animation.curAnim.curFrame = 1;
-            iconP2.animation.curAnim.curFrame = 2;
-    }
-        else
-    {
-            iconP1.animation.curAnim.curFrame = 0;
-            iconP2.animation.curAnim.curFrame = 0;
-    }
-        if (healthBar.percent > 80)
-    {
-            iconP2.animation.curAnim.curFrame = 1;
-            iconP1.animation.curAnim.curFrame = 2;
-    }
-        else
-    {
-            iconP2.animation.curAnim.curFrame = 0;
-            iconP1.animation.curAnim.curFrame = 0;
-    }
+
+		if (healthBar.percent < 20)
+		{
+			iconP1.animation.curAnim.curFrame = 1;
+			iconP2.animation.curAnim.curFrame = 2;
+		}
+		else
+        {
+			iconP1.animation.curAnim.curFrame = 0;
+			iconP2.animation.curAnim.curFrame = 0;
+        }
+
+		if (healthBar.percent > 80)
+		{
+			iconP2.animation.curAnim.curFrame = 1;
+			iconP1.animation.curAnim.curFrame = 2;
+		}
+		else
+        {
+			iconP2.animation.curAnim.curFrame = 0;
+			iconP1.animation.curAnim.curFrame = 0;
+        }
+
 		/* if (FlxG.keys.justPressed.NINE)
 			FlxG.switchState(new Charting()); */
 
@@ -1636,6 +1727,7 @@ class PlayState extends MusicBeatState
 					// FlxG.switchState(new PlayState());
 			}
 		}
+
 		// better streaming of shit
 
 		// RESET = Quick Game Over Screen
@@ -1758,18 +1850,27 @@ class PlayState extends MusicBeatState
 				// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
 
 				// I wouldn't have found this error with downscroll if I hadn't looked into the kade engine code (thanks to kade dev)
-				//Tysm Poyo for helping us find this lmao
 				if (daNote.y < -daNote.height && !downscroll_isenabled || (daNote.y >= strumLine.y + 106) && downscroll_isenabled)
 				{
-					if (daNote.tooLate || !daNote.wasGoodHit)
+					if (daNote.tooLate || !daNote.wasGoodHit && !practice_isenabled && !fcmode_enable)
 					{
 						health -= 0.0475;
 						vocals.volume = 0;
-						songScore -= 10;
-						combo = 0;
 						misses += 1;
+						combo = 0;
+						gf.playAnim('sad');
+						songScore -= 250;
+						//I hate everything
 					}
-
+					if (fcmode_enable && daNote.tooLate || fcmode_enable && !daNote.wasGoodHit)
+					{
+					    health -= 2;
+					}
+					if (practice_isenabled && daNote.tooLate || practice_isenabled && !daNote.wasGoodHit)
+					{
+					    health += 0.0600;
+					    songScore = 0;
+					}
 
 					daNote.active = false;
 					daNote.visible = false;
@@ -1841,6 +1942,9 @@ class PlayState extends MusicBeatState
 
 				if (storyDifficulty == 2)
 					difficulty = '-hard';
+
+				if (storyDifficulty == 3)
+					difficulty = '-erect';
 
 				trace('LOADING NEXT SONG');
 				trace(PlayState.storyPlaylist[0].toLowerCase() + difficulty);
@@ -2248,11 +2352,11 @@ class PlayState extends MusicBeatState
 		if (!boyfriend.stunned)
 		{
 			health -= 0;
-			if (combo > 5 && gf.animOffsets.exists('idle'))
+			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
 				gf.playAnim('idle');
 			}
-			combo -= 0;
+			combo += 0;
 
 			songScore -= 0;
 
@@ -2470,7 +2574,6 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	//500 subs
 	var lightningStrikeBeat:Int = 0;
 	var lightningOffset:Int = 8;
 
@@ -2532,7 +2635,12 @@ class PlayState extends MusicBeatState
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
 		{
 			boyfriend.playAnim('hey', true);
-			gf.playAnim('cheer', true);
+		}
+
+		if (curBeat % 8 == 7 && curSong == 'Blammed')
+		{
+				boyfriend.playAnim('hey', true);
+				gf.playAnim('cheer', true);
 		}
 
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
