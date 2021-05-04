@@ -27,8 +27,7 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['controls', 'set fps', 'downscroll: off', 'About'];
-
+	var menuItems:Array<String> = ['controls', 'set fps', 'downscroll: off', 'practice: off', 'full combo mode: off', 'Not available', 'Not available', 'About'];
 	var _pad:FlxVirtualPad;
 
 	var UP_P:Bool;
@@ -56,6 +55,14 @@ class OptionsMenu extends MusicBeatState
 
 		if (config.getdownscroll()){
 			menuItems[menuItems.indexOf('downscroll: off')] = 'downscroll: on';
+		}
+
+		if (config.getpractice()){
+		    menuItems[menuItems.indexOf('practice: off')] = 'practice: on';
+		}
+
+		if (config.getfcmode()){
+		    menuItems[menuItems.indexOf('full combo mode: off')] = 'full combo mode: on';
 		}
 
 		for (i in 0...menuItems.length)
@@ -110,6 +117,20 @@ class OptionsMenu extends MusicBeatState
 				case "downscroll: on" | "downscroll: off":
 					config.setdownscroll();
 					FlxG.resetState();
+				
+				case "practice: on" | "practice: off":
+				    config.setpractice();
+				    FlxG.resetState();
+				
+				case "full combo mode: on" | "full combo mode: off":
+				    config.setfcmode();
+				    FlxG.resetState();
+				
+				case "Not available" | "Dont click":
+				    FlxG.resetState();
+				
+				case "Not available" | "Please stop":
+				    FlxG.resetState();
 				
 				case "About":
 					FlxG.switchState(new options.AboutState());
