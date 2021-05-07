@@ -38,6 +38,48 @@ class Mobilecontrols extends FlxSpriteGroup
 	private var controls(get, never):Controls;
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
+	//keyspackage;
+
+import flixel.FlxG;
+import flixel.group.FlxSpriteGroup;
+
+import ui.FlxVirtualPad;
+import ui.Hitbox;
+
+import Config;
+
+class Mobilecontrols extends FlxSpriteGroup
+{
+    public var hitboxisenabled:Bool = false;
+	public var keyboardisenabled:Bool = false;
+
+	public var downscroll_isenabled:Bool = false;
+	public var practice_isenabled:Bool = false;
+	public var fcmode_enable:Bool = false;
+
+    public var optimize_isenabled:Bool = false;
+
+    //public var notebasic:Bool = true;
+    //public var noteweek1:Bool = false;
+    //public var noteweek2:Bool = false;
+    //public var noteweek3:Bool = false;
+    //public var noteweek4:Bool = false;
+    //public var noteweek5:Bool = false;
+    //public var noteweekhorror:Bool = false;
+    //public var noteweek6:Bool = false;
+    //public var noteweek7:Bool = false;
+    //public var noteweektricky:Bool = false;
+    //public var noteweekhex:Bool = false;
+
+    var _pad:FlxVirtualPad;
+	var _hb:Hitbox;
+
+
+	var controlmode:Int = 0;
+
+	private var controls(get, never):Controls;
+	inline function get_controls():Controls
+		return PlayerSettings.player1.controls;
 
 	//keys
 	public var UP:Bool;
@@ -65,6 +107,7 @@ class Mobilecontrols extends FlxSpriteGroup
 		downscroll_isenabled = config.getdownscroll();
 		practice_isenabled = config.getpractice();
 		fcmode_enable = config.getfcmode();
+		optimize_isenabled = config.getoptimize();
 		//notebasic = config.getnotebasic();
 		//noteweek1 = config.getnoteweek1();
 		//noteweek2 = config.getnoteweek2();
@@ -164,3 +207,31 @@ class Mobilecontrols extends FlxSpriteGroup
 	}
 }
 
+
+	public var UP:Bool;
+	public var RIGHT:Bool;
+	public var DOWN:Bool;
+	public var LEFT:Bool;
+
+	public var UP_P:Bool;
+	public var RIGHT_P:Bool;
+	public var DOWN_P:Boo
+	public var LEFT_P:Bool;
+
+	public var UP_R:Bool;
+	public var RIGHT_R:Bool;
+	public var DOWN_R:Bool;
+	public var LEFT_R:Bool;
+
+	var config:Config = new Config();
+
+	
+    public function new()
+    {
+        super();
+
+		d = true;
+				add(_hb);
+			default: //default (0)
+				;
+		}
