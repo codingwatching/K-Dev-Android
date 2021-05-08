@@ -15,10 +15,10 @@ class MenuCharacter extends FlxSprite
 
 		this.character = character;
 
-		var tex = Paths.getSparrowAtlas('menucharacter/campaign_menu_UI_characters');
+		var tex = Paths.getSparrowAtlas('campaign_menu_UI_characters');
 		
 		for (char in listCharacters){
-			var chartex = Paths.getSparrowAtlas('menucharacter' + char);
+			var chartex = Paths.getSparrowAtlas('' + char);
 				
 			for (frame in chartex.frames){
 				tex.pushFrame(frame);
