@@ -2,6 +2,8 @@
 
 check releases to download apk
 
+if you attempt to steal this i will steal your kneecaps.
+
 Download:
 
 https://github.com/KlavierGayming/K-Dev-Android/releases
